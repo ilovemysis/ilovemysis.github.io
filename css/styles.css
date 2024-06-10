@@ -8,7 +8,7 @@ body {
     font-family: 'Satisfy', cursive;
     font-weight: 400;
     font-style: normal;
-    background-color: #ffccf9;
+    background-color: #fdc9df;
     color: #333;
     text-align: center;
     padding: 10px 20px;
@@ -124,42 +124,51 @@ footer {
         padding: 5px 10px;
     }
 
-#sidebar {
-    width: 0; /* Start hidden */
-    background-color: #fdc9df; /* Light purple background for visibility */
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh; /* Full height */
-    overflow-y: auto; /* Scrollable vertically if needed */
-    transition: width 0.5s ease; /* Smooth transition */
-    z-index: 1000; /* Ensure it stays on top */
-}
+    #sidebar {
+        width: 0; /* Start hidden */
+        background-color: #fdc9df; /* Light purple background for visibility */
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh; /* Full height */
+        overflow-y: auto; /* Scrollable vertically if needed */
+        transition: width 0.5s ease; /* Smooth transition */
+        z-index: 1000; /* Ensure it stays on top */
+    }
 
-#toggleButton {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 30px; /* Large size for easy tapping/clicking */
-    background-color: #d6336c; /* Vibrant pink for high visibility */
-    border: none;
-    color: white; /* White text */
-    cursor: pointer; /* Pointer cursor for interactivity */
-    padding: 10px 15px; /* Padding for better touch area */
-    z-index: 1001; /* Higher z-index to stay on top of the sidebar */
-    border-radius: 5px; /* Rounded corners for aesthetics */
-}
+    #toggleButton {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 30px; /* Large size for easy tapping/clicking */
+        background-color: #d6336c; /* Vibrant pink for high visibility */
+        border: none;
+        color: white; /* White text */
+        cursor: pointer; /* Pointer cursor for interactivity */
+        padding: 10px 15px; /* Padding for better touch area */
+        z-index: 1001; /* Higher z-index to stay on top of the sidebar */
+        border-radius: 5px; /* Rounded corners for aesthetics */
+    }
 
-#sidebar ul {
-    list-style-type: none;
-    padding: 80px 10px 10px; /* Adjusted padding to account for button */
-    margin: 0;
-}
+    #sidebar ul {
+        list-style-type: none;
+        padding: 80px 10px 10px; /* Adjusted padding to account for button */
+        margin: 0;
+    }
 
-#sidebar ul li a {
-    color: white; /* White text links */
-    padding: 10px;
-    text-decoration:
-}
+    #sidebar ul li a {
+        color: white; /* White text links */
+        padding: 10px;
+        text-decoration:
+    }
+
+    header {
+        /*background-color: #d6336c; /* Vibrant pink header */
+        font-size: 20px; /* Large font for easy reading */
+        color: #d6336c; /* White text for visibility */
+        padding: 10px 10px;
+        border-radius: 8px;
+        margin: 30px;
+    }
 
 }
