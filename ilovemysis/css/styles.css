@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+body {
+    background-image: url('icons/pink_bows.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Satisfy', cursive;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #ffccf9;
+    color: #333;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden;
+    font-size: 22px; /* Large font for easy reading */
+}
+
+.satisfy-regular {
+    font-family: 'Satisfy', cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+header {
+    /*background-color: #d6336c; /* Vibrant pink header */
+    font-size: 20px; /* Large font for easy reading */
+    color: #d6336c; /* White text for visibility */
+    padding: 10px 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#timer {
+    font-size: 24px; /* Large font for easy reading */
+    background: #ffffff; /* White background for contrast */
+    border: 2px solid #ff85cb; /* Light pink border */
+    padding: 20px;
+    margin: 40px auto;
+    width: 350px; /* Fixed width */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 0 20px #ff85cb; /* Subtle pink shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#countdown {
+    font-family: 'Digital-7 Mono', monospace; /* Digital clock-style font */
+    font-size: 48px; /* Large digits */
+    color: #d6336c; /* Vibrant pink digits */
+    letter-spacing: 2px; /* Spacing for clarity */
+}
+
+footer {
+    margin-top: 20px;
+    color: #666; /* Medium grey text */
+}
+
+#sidebar {
+    width: 0; /* Start hidden */
+    background-color: #fdc9df; /* Light purple background for visibility */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh; /* Full height */
+    overflow-y: auto; /* Scrollable vertically if needed */
+    transition: width 0.5s ease; /* Smooth transition */
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+#toggleButton {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 30px; /* Large size for easy tapping/clicking */
+    background-color: #d6336c; /* Vibrant pink for high visibility */
+    border: none;
+    color: white; /* White text */
+    cursor: pointer; /* Pointer cursor for interactivity */
+    padding: 10px 15px; /* Padding for better touch area */
+    z-index: 1001; /* Higher z-index to stay on top of the sidebar */
+    border-radius: 5px; /* Rounded corners for aesthetics */
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 80px 10px 10px; /* Adjusted padding to account for button */
+    margin: 0;
+}
+
+#sidebar ul li a {
+    color: white; /* White text links */
+    padding: 10px;
+    text-decoration:
+
