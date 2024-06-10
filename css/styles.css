@@ -96,4 +96,65 @@ footer {
     color: white; /* White text links */
     padding: 10px;
     text-decoration:
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    #sidebar button {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        font-size: 20px;
+        padding: 15px;
+        background-color: #d6336c;
+    }
+
+    #sidebar ul {
+        display: block;
+    }
+
+    #sidebar ul li a {
+        padding: 10px;
+        text-align: center;
+    }
+
+    main {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    header {
+        padding: 20px;
+        font-size: 1.5em;
+    }
+
+    footer {
+        padding: 20px;
+        font-size: 1em;
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    main {
+        padding: 15px;
+    }
+
+    header {
+        padding: 15px;
+        font-size: 1.75em;
+    }
+
+    footer {
+        padding: 15px;
+        font-size: 1em;
+    }
+}
 
