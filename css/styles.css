@@ -124,7 +124,16 @@ footer {
         padding: 5px 10px;
     }
 
-    #sidebar ul {
-        padding: 60px 5px 5px; /* Less padding in mobile view */
+    #sidebar {
+        width: 0; /* Ensure sidebar starts hidden */
+        background-color: #fdc9df;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        overflow-y: auto;
+        transition: width 0.5s ease; /* Smooth width transition */
+        z-index: 1000;
     }
+
 }
