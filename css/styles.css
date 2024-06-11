@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
 body {
-    background-image: url('icons/pink_bows.jpg');
+    background-image: url('icons/pink_bows_pc.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -103,6 +103,7 @@ footer {
 /* Mobile Styles */
 @media (max-width: 768px) {
     body {
+        background-image: url('icons/pink_bows_mobile.jpg');
         padding: 5px 10px;
         font-size: 18px; /* Smaller font size for mobile */
     }
