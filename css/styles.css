@@ -18,6 +18,21 @@ body {
     font-size: 22px; /* Large font for easy reading */
 }
 
+.hasi-container {
+    position: relative; /* This makes the positioning of the children absolute relative to this container */
+    width: 100%; /* or any specific size you need */
+    height: 20px; /* or any specific size you need, must be defined for absolute positioning */
+}
+
+.top-right-image {
+    position: absolute;
+    top: 0; /* Aligns the image to the top of the container */
+    right: 0; /* Aligns the image to the right of the container */
+    display: block; /* Ensures the image is displayed */
+    width: 70px; /* Specify the size as needed */
+    height: auto; /* Keeps the image's aspect ratio */
+}
+
 .satisfy-regular {
     font-family: 'Satisfy', cursive;
     font-weight: 400;
@@ -101,7 +116,7 @@ footer {
 }
 
 /* Mobile Styles */
-@media (max-width: 768px) {
+@media (max-width: 700px) {
     body {
         background-image: url('icons/pink_bows_mobile.jpg');
         padding: 5px 10px;

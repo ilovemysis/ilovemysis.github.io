@@ -1,6 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     updateAge();  // Update the age when the document loads
     let time = setInterval(countdown, 1000);  // Initialize countdown
+    var images = document.querySelectorAll('.animatedimage img');
+    var currentImage = 0;
+    images[0].style.display = 'block'; // Show the first image initially
+
+    setInterval(function() {
+        images[currentImage].style.display = 'none'; // Hide the current image
+        currentImage = (currentImage + 1) % images.length; // Move to the next image, loop back to the first
+        images[currentImage].style.display = 'block'; // Show the new current image
+    }, 2200);
 });
 
 document.getElementById('toggleButton').addEventListener('click', function() {
