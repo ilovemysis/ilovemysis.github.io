@@ -105,7 +105,7 @@ footer {
 
 #sidebar ul li a {
     color: white; /* White text links */
-    padding: 25px;
+    padding: 15px;
     text-decoration: none;
     font-size: 25px; /* Adjusted font size for bigger text */
     margin-bottom: 20px; /* Adds 10px of space below each link */
