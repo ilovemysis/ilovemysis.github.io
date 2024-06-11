@@ -84,3 +84,17 @@ function toggleSidebar() {
     }
 }
 
+
+const carouselImages = document.querySelectorAll('.carousel img');
+let currentIndex = 0;
+
+const showNextImage = () => {
+    carouselImages[currentIndex].classList.remove('active');
+    carouselImages[currentIndex].classList.add('next');
+    currentIndex = (currentIndex + 1) % carouselImages.length;
+    carouselImages[currentIndex].classList.remove('next');
+    carouselImages[currentIndex].classList.add('active');
+}
+
+setInterval(showNextImage, 3000);
+
