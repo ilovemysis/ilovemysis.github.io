@@ -29,6 +29,17 @@ body {
     height: auto; /* Maintain the original image height */
 }
 
+.sister-container {
+    width: 100%; /* Full width of the container */
+    text-align: center; /* Center the image horizontally */
+    margin: 0 0; /* Provide some spacing above and below */
+}
+
+.sister-container img {
+    width: 450px; /* Maintain the original image width */
+    height: auto; /* Maintain the original image height */
+}
+
 .satisfy-regular {
     font-family: 'Satisfy', cursive;
     font-weight: 400;
