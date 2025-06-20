@@ -1,10 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
+  #gameCanvas {
+    width: 90vw;
+    height: 70vh;
+    display: block;
+    margin: 80px auto 20px; /* spacing from toggle button */
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 0 10px #d6336c;
+  }
+
 body {
     background-image: url('icons/pink_bows_pc.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed; /* 👈 keeps background still */
     font-family: 'Satisfy', cursive;
     font-weight: 400;
     font-style: normal;
@@ -95,7 +106,7 @@ footer {
 }
 
 #toggleButton {
-    position: absolute;
+    position: fixed;
     top: 10px;
     left: 10px;
     font-size: 30px; /* Large size for easy tapping/clicking */

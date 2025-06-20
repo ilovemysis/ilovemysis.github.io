@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Jump & Run</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    #gameCanvas {
+      width: 90vw;
+      height: 70vh;
+      display: block;
+      margin: 80px auto 20px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 15px;
+      box-shadow: 0 0 10px #d6336c;
+    }
+
+    #toggleButton {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1001;
+      font-size: 30px;
+      background-color: #d6336c;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+
+    #sidebar.open {
+      width: 250px;
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <ul class="menu">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="countdown.html">Countdown</a></li>
+      <li><a href="gallery.html">Gallerie</a></li>
+      <li><a href="dearsister18.html">Zum 18.</a></li>
+      <li><a href="dearsister19.html">Zum 19.</a></li>
+      <li><a href="game.html">Game</a></li>
+    </ul>
+  </div>
+
+  <!-- Toggle Button -->
+  <button id="toggleButton">☰</button>
+
+  <!-- Game Canvas -->
+  <canvas id="gameCanvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+
+    const sidebar = document.getElementById("sidebar");
+    const toggleButton = document.getElementById("toggleButton");
+    toggleButton.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+    });
+
+    function scale(val) {
+      return val * canvas.height / 320;
+    }
+
+    const playerImg = new Image();
+    playerImg.src = "css/icons/game/player.png";
+
+    const obstacleImages = [
+      "css/icons/game/shit.png", "css/icons/game/jessica.png", "css/icons/game/chili.png", "css/icons/game/spinne.png"
+    ].map(src => {
+      const img = new Image();
+      img.src = src;
+      return img;
+    });
+
+    const player = {
+      x: scale(50),
+      y: scale(250),
+      width: scale(60),
+      height: scale(75),
+      vy: 0,
+      gravity: scale(0.7),
+      jumpForce: scale(-16),
+      grounded: false,
+      jump() {
+        if (this.grounded) {
+          this.vy = this.jumpForce;
+          this.grounded = false;
+        }
+      },
+      update() {
+        this.vy += this.gravity;
+        this.y += this.vy;
+        if (this.y + this.height >= canvas.height) {
+          this.y = canvas.height - this.height;
+          this.vy = 0;
+          this.grounded = true;
+        }
+      },
+      draw() {
+        ctx.drawImage(playerImg, this.x, this.y, this.width, this.height);
+      }
+    };
+
+    let obstacles = [];
+    let gameOver = false;
+    let score = 0;
+    let spawnTimer = 0;
+
+    function spawnObstacle() {
+      const height = Math.random() * scale(30) + scale(20);
+      const imgIndex = Math.floor(Math.random() * obstacleImages.length);
+      obstacles.push({
+        x: canvas.width,
+        y: canvas.height - height,
+        width: scale(30),
+        height: height,
+        speed: scale(4),
+        img: obstacleImages[imgIndex]
+      });
+    }
+
+    function updateObstacles() {
+      obstacles.forEach(obs => obs.x -= obs.speed);
+      obstacles = obstacles.filter(obs => {
+        if (obs.x + obs.width <= 0) {
+          score++;
+          return false;
+        }
+        return true;
+      });
+    }
+
+    function checkCollision(r1, r2) {
+      return (
+        r1.x < r2.x + r2.width &&
+        r1.x + r1.width > r2.x &&
+        r1.y < r2.y + r2.height &&
+        r1.y + r1.height > r2.y
+      );
+    }
+
+    function resetGame() {
+      sidebar.classList.remove("open"); // 👈 closes the sidebar
+    
+      Object.assign(player, {
+        x: scale(50),
+        y: scale(250),
+        vy: 0,
+        width: scale(60),
+        height: scale(75),
+        gravity: scale(0.7),
+        jumpForce: scale(-16),
+        grounded: false
+      });
+      sidebar.classList.remove("open"); // 👈 closes the sidebar
+
+      gameOver = false;
+      score = 0;
+      obstacles = [];
+      spawnTimer = 0;
+      gameLoop();
+      sidebar.classList.remove("open"); // 👈 closes the sidebar
+
+    }
+    
+
+    function gameLoop() {
+
+      sidebar.classList.remove("open"); // 👈 closes the sidebar
+      if (gameOver) {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.font = scale(24) + "px 'Satisfy', cursive";
+        ctx.fillText("Game Over!", scale(50), canvas.height / 2 - scale(20));
+        ctx.fillText("Score: " + score, scale(50), canvas.height / 2 + scale(10));
+        ctx.fillText("Try again", scale(50), canvas.height / 2 + scale(50));
+        return;
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      player.update();
+      player.draw();
+
+      updateObstacles();
+      for (let obs of obstacles) {
+        ctx.drawImage(obs.img, obs.x, obs.y, obs.width, obs.height);
+        if (checkCollision(player, obs)) {
+          gameOver = true;
+        }
+      }
+
+      ctx.fillStyle = "black";
+      ctx.font = scale(16) + "px 'Satisfy', cursive";
+      ctx.fillText("Score: " + score, scale(10), scale(20));
+
+      spawnTimer++;
+      if (spawnTimer > 90) {
+        spawnObstacle();
+        spawnTimer = 0;
+      }
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    // Controls
+    function handleInput() {
+      if (gameOver) {
+        resetGame();
+      } else {
+        player.jump();
+      }
+    }
+
+    window.addEventListener("keydown", e => {
+      if (["Space", "ArrowUp", "Enter"].includes(e.code)) handleInput();
+    });
+    window.addEventListener("touchstart", handleInput);
+
+    playerImg.onload = () => {
+      gameLoop();
+    };
+  </script>
+</body>
+</html>
